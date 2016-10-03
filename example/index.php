@@ -32,16 +32,16 @@ require_once('credentials.php');
         <div class="modal-content">
           <div class="modal-header">
             <div id="modal-header-title">
-              <h4 class="modal-title" id="myModalLabel">Cryptogramme visuel</h4>
+              <h4 class="modal-title" id="myModalLabel">Card verification code</h4>
             </div>  
             <div id="modal-header-close">
               <button type="button" id="btn-close" data-dismiss="modal"></button>
             </div>              
           </div>
           <div class="modal-body">
-            <p>Pour des raisons de sécurité, vous devez entrer le cryptogramme visuel (CVV).
-                C'est le nombre à 3 chiffres qui se trouve au verso des cartes <span class="modal-bold">VISA®</span>, <span class="modal-bold">MASTERCARD®</span> et <span class="modal-bold">MAESTRO®</span></p>
-              <p>Le code de sécurité <span class="modal-bold">AMERICAN EXPRESS</span> est le nombre à 4 chiffres qui se trouve au recto de votre carte.</p>
+            <p>For security reasons, you have to enter your card security code (CVC).
+                It's the 3-digits number on the back of your card for <span class="modal-bold">VISA®</span>, <span class="modal-bold">MASTERCARD®</span> and <span class="modal-bold">MAESTRO®</span></p>
+              <p>The <span class="modal-bold">AMERICAN EXPRESS</span> security code is the 4-digits number on the front of your card.</p>
             <div id="cvv-img">
                 <img src="./assets/card.png">
             </div>
@@ -59,7 +59,7 @@ require_once('credentials.php');
                     <div id="price">HiPay Direct Post Tokenization Simulator</div>
                     <div id="order">Submit the form in oder to tokenize the credit card details using the HiPay Fullservice SDK for JavaScript (payment details won't hit the server). You will see the HiPay Fullservice platform response below.</div>
                     <div id="code"></div>
-                    <div id="link-area"><a href="#null" id="link">Click here to fill the form with sample payment details</a></div>
+                    <div id="link-area"><a href="#null" id="link">Click here to fill the form with sample payment details.</a></div>
                     <div id="charge"><button type="button" id="charge-button" style="display: none;">Create a test charge on this token (server-side PHP SDK)</button></div>
                 </div>
             </div>
