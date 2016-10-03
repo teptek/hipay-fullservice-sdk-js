@@ -1,4 +1,4 @@
-# HiPay Fullservice SDK for JavaScript
+# HiPay Fullservice SDK for JavaScript (Direct Post Tokenization)
 [![GitHub license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/hipay/hipay-fullservice-sdk-js/master/LICENSE.md)
 
 The HiPay Fullservice SDK for JavaScript allows you to tokenize credit or debit cards against the HiPay Fullservice payment platform, directly from the web browser. This method (called Direct Post in the PCI council terminology) allows you to offer a unfied payment workflow to your customers while remaining PCI compliant.
