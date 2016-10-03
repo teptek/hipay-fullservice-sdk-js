@@ -1,8 +1,9 @@
 /**
  * HiPay Fullservice library to tokenize credit cards
  */
-var HiPay = {
-	allowedParameters: {
+var HiPay = (function (HiPay, reqwest) {
+
+	HiPay.allowedParameters = {
 		'card_number':true, 
 		'card_holder':true, 
 		'card_expiry_month':true, 
@@ -10,12 +11,13 @@ var HiPay = {
 		'cvc':true, 
 		'multi_use':true,
 		'generate_request_id':true
-	},
-	target: 'production',
-	username: '',
-	publicKey: '',
+	};
 
-	isCardNumberValid: function (value) {
+	HiPay.target = 'production';
+	HiPay.username = '';
+	HiPay.publicKey = '';
+
+	HiPay.isCardNumberValid = function (value) {
 		  // accept only digits, dashes or spaces
 		if (/[^0-9-\s]+/.test(value)) return false;
 
@@ -36,13 +38,13 @@ var HiPay = {
 		}
 
 		return (nCheck % 10) == 0;
-	},
+	};
 	
-	isValid: function (params) {
+	HiPay.isValid = function (params) {
 		var errors = {'code':0, 'message':''};
 		var unallowedParams = [];
 		for (key in params) {
-			if (this.allowedParameters[key] != true) {
+			if (HiPay.allowedParameters[key] != true) {
 				unallowedParams.push(key);
 			}
 		}
@@ -58,7 +60,7 @@ var HiPay = {
 			message += '}';
 			message += ' allowed parameters are: {';
 				
-			for (key in this.allowedParameters) {
+			for (key in HiPay.allowedParameters) {
 				message += key;
 				message += ' ';
 			}
@@ -67,43 +69,43 @@ var HiPay = {
 			errors.message = message;
 		}
 		
-		if ( ! this.isCardNumberValid(params['card_number']) ) {
+		if ( ! HiPay.isCardNumberValid(params['card_number']) ) {
 			errors.code = 409;
 			errors.message = 'cardNumber is invalid : luhn check failed';
 		}
 		
 		return errors;
-	},
+	};
 	
-	setTarget: function(target) { 
-	    this.target = target; 
-    },
+	HiPay.setTarget = function(target) { 
+	    HiPay.target = target; 
+    };
 
-    getTarget: function() { 
-        return this.target; 
-    },
+    HiPay.getTarget = function() { 
+        return HiPay.target; 
+    };
     
-    setCredentials: function(username, publicKey) {
-        this.username = username;
-        this.publicKey = publicKey;
-    },
+    HiPay.setCredentials = function(username, publicKey) {
+        HiPay.username = username;
+        HiPay.publicKey = publicKey;
+    };
     
-    create: function(params, fn_success, fn_failure) {
+    HiPay.create = function(params, fn_success, fn_failure) {
     	if(params['card_expiry_month'].length < 2) {
 	    	params['card_expiry_month'] = '0' + params['card_expiry_month'];
     	}
     	if(params['card_expiry_year'].length == 2) {
 	    	params['card_expiry_year'] = '20' + params['card_expiry_year'];
     	}
-    	errors = this.isValid(params);
+    	errors = HiPay.isValid(params);
 		if ( errors.code != 0 ) {
     		fn_failure(errors);
     	} else {
     	
 	        var endpoint = 'https://secure2-vault.hipay-tpp.com/rest/v2/token/create.json';
-	        if (this.getTarget() == 'test' || this.getTarget() == 'stage' ) {
+	        if (HiPay.getTarget() == 'test' || HiPay.getTarget() == 'stage' ) {
 	            endpoint = 'https://stage-secure2-vault.hipay-tpp.com/rest/v2/token/create.json';
-	        } else if (this.getTarget() == 'dev') {
+	        } else if (HiPay.getTarget() == 'dev') {
 	            endpoint = 'http://dev-secure2-vault.hipay-tpp.com/rest/v2/token/create.json';
 	        }
 	        
@@ -116,7 +118,7 @@ var HiPay = {
 			    crossOrigin: true,
 			    method: 'post',
 			    headers: {
-	                'Authorization': 'Basic ' + window.btoa(this.username + ':' + this.publicKey)
+	                'Authorization': 'Basic ' + window.btoa(HiPay.username + ':' + HiPay.publicKey)
 	            },
 			    data: params,
 			    success: function(resp) {
@@ -133,5 +135,8 @@ var HiPay = {
 		        }
 	        });
     	}
-    }
-};
+    };
+
+    return HiPay;
+
+} (HiPay || {}, reqwest));
