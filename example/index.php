@@ -59,7 +59,7 @@ require_once('credentials.php');
                     <div id="price">HiPay Direct Post Tokenization Simulator</div>
                     <div id="order">Submit the form in oder to tokenize the credit card details using the HiPay Fullservice SDK for JavaScript (payment details won't hit the server). You will see the HiPay Fullservice platform response below.</div>
                     <div id="code"></div>
-                    <div id="link-area"><a href="#null" id="link">Click here to fill the form with sample payment details.</a></div>
+                    <div id="link-area"><a href="#null" id="link">Click here</a> to fill the form with sample payment details.</div>
                     <div id="charge"><button type="button" id="charge-button" style="display: none;">Create a test charge on this token (server-side PHP SDK)</button></div>
                 </div>
             </div>

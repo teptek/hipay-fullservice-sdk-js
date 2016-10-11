@@ -45,11 +45,19 @@ body h1 {
 
 body a {
     font-weight: bold;
+    outline: none;
 }
 
 body a:hover, body a:focus {
     color: #005a94;
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+p {
+    color: #888888;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 10px 0;
 }
 
 .subtitle {
@@ -87,31 +95,39 @@ body a:hover, body a:focus {
     }
 
     #infos-txt {
-        padding-top: 5px;
         text-align: left;
         width: 100%;
     }
 
     #infos-txt #price {
-        color: #005A94;
-        font-size: 22.5px;
+        color: #005a94;
+        font-size: 2.2rem;
         font-weight: bold;
         letter-spacing: -0.01em;
+        line-height: 1.2;
         margin: 0;
     }
 
+    #infos-txt #link-area {
+        color: #888888;
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding: 0;
+    }
+
     #infos-txt #link-area a#link {
-        color: #005A94;
-        font-size: 13.5px;
+        color: #007cc1;
+        font-size: 1.3rem;
         font-weight: bold;
         letter-spacing: -0.01em;
         margin: 0;
     }
 
     #infos-txt #order {
-        color: #aaaaaa;
-        font-size: 13.5px;
-        font-weight: 500;
+        color: #888888;
+        font-size: 1.3rem;
+        font-weight: 400;
+        padding: 10px 0;
     }
 
     #infos-txt #code {
@@ -173,7 +189,7 @@ body a:hover, body a:focus {
 
 #submit-zone {
     float: left;
-    margin-top: 15px;
+    margin-top: 1.4rem;
     width: 100%;
 }
 
@@ -206,9 +222,9 @@ body a:hover, body a:focus {
 #submit-zone button {
     border: medium none;
     color: #ffffff;
-    font-size: 16.5px;
+    font-size: 1.4rem;
     font-weight: bold;
-    padding: 9px 34px;
+    padding: 10px 0;
     transition: all 0.1s ease 0s;
     width: 100%;
 }
@@ -249,7 +265,7 @@ body a:hover, body a:focus {
     /** select **/
 
     #select-method select {
-        border: 1px solid #cccccc;
+        border: 1px solid #dddddd;
         border-radius: 3px;
         box-shadow: none;
         margin-bottom: 10px;
@@ -293,7 +309,7 @@ body a:hover, body a:focus {
     }
 
     .input-group {
-        border: 1px solid #cccccc;
+        border: 1px solid #dddddd;
         box-shadow:none;
         margin-bottom: 10px;
         width: 100%
@@ -579,7 +595,7 @@ body a:hover, body a:focus {
 
 footer.container {
     background-color: #F5F5F5;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #dddddd;
     display: inline-block;
     float: left;
     height: 60px;
@@ -647,15 +663,49 @@ footer div.fcontent {
 
 /* media queries */
 
-@media screen and (max-width: 900px) {
-    
+@media screen and (max-width: 992px) {
+    #main, footer.container, #brand {
+        width: 480px;
+    }
+    #left-side {
+        -webkit-border-radius: 3px 3px 0;
+        -moz-border-radius: 3px 3px 0;
+        border-radius: 3px 3px 0;
+        min-height: inherit;
+        border-bottom: 1px solid #dddddd;
+    }
+    .col-md-6 {
+        float: left;
+        width: 50%;
+    }
+    #form {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        width: 100%;
+        padding: ;
+    }
+    #left-side, #form {
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+
+    html body {
+        background-image: none;
+        background-color: white;
+    }
+
+
     
     /** main - media queries **/
-    
+
     #main.container {
+        margin: 0;
         max-height: inherit;
-        margin: 5px auto;
-        width: calc(100% - 10px);
+        width: 100%;
     }
     
     body .col-md-6 {
@@ -668,7 +718,6 @@ footer div.fcontent {
     /** top - infos - media queries **/
 
         #infos {
-            background-color: #fff;
             display: inline-block;
             padding: 25px;
             margin-bottom: 0;
@@ -679,12 +728,6 @@ footer div.fcontent {
             float: left;    
         }
 
-        #infos-txt {
-            float: right;
-            margin: 0;
-            text-align: right;
-        }
-
         #infos-txt #price {
             color: #005a94;
             font-size: 20px;
@@ -692,7 +735,6 @@ footer div.fcontent {
         }
 
         #left-side {
-            border-bottom: 1px solid #cccccc;
             border-radius: 3px 3px 0 0;
             -moz-border-radius: 3px 3px 0 0;
             -webkit-border-radius: 3px 3px 0 0;
@@ -747,8 +789,8 @@ footer div.fcontent {
     }
     
     #brand {
-        background-color: #F5F5F5; 
-        border-top: 1px solid #cccccc;
+        background-color: transparent;
+        border-top: 1px solid #dddddd;
         border-radius: 0 0 3px 3px;
         -moz-border-radius: 0 0 3px 3px;
         -webkit-border-radius: 0 0 3px 3px;
@@ -779,13 +821,7 @@ footer div.fcontent {
 
 }
 
-@media screen and (max-width: 992px) {
 
-    .col-md-6 {
-        float: left;
-        width: 50%;
-    }
-}
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
     
@@ -802,10 +838,10 @@ footer div.fcontent {
 }
 
 .details {
-    margin-bottom: 15px;
+    color: #2c383d;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #005A94;
-    font-size: 15px;
+    margin-bottom: 15px;
 }
 
 /* end - media queries */
