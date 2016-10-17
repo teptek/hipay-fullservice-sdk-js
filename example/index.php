@@ -193,7 +193,7 @@ require_once('credentials.php');
                   $("#order").text("The token has been created using the JavaScript SDK (client side).");
 
                   $('#code').text(JSON.stringify(result, null, 4));
-                  $('#link').text('');
+                  $('#link-area').text('');
 
                   $("#charge-button").show();
              
